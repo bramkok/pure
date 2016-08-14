@@ -1,6 +1,6 @@
-# Pure
-# by Sindre Sorhus
-# https://github.com/sindresorhus/pure
+# Purist
+# by Bram Kok
+# https://github.com/bramkok/purist
 # MIT License
 
 # For my own and others sanity
