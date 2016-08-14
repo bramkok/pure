@@ -1,1 +1,1 @@
-pure.zsh
+purist.zsh
