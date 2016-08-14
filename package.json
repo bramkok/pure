@@ -1,15 +1,19 @@
 {
-  "name": "pure-prompt",
-  "version": "1.4.0",
-  "description": "Pretty, minimal and fast ZSH prompt",
+  "name": "purist",
+  "version": "1.0.0",
+  "description": "A ZSH prompt for purists",
   "license": "MIT",
-  "repository": "sindresorhus/pure",
+  "repository": "bramkok/purist",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "sindresorhus.com"
+    "name": "Bram Kok",
+    "url": "bramkok.com"
   },
   "maintainers": [
+    {
+      "name": "Sindre Sorhus",
+      "email": "sindresorhus@gmail.com",
+      "url": "sindresorhus.com"
+    },
     {
       "name": "Mathias Fredriksson",
       "url": "github.com/mafredri"
@@ -19,10 +23,10 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "postinstall": "dest=/usr/local/share/zsh/site-functions; mkdir -p $dest && ln -sf \"$PWD/pure.zsh\" $dest/prompt_pure_setup && ln -sf \"$PWD/async.zsh\" $dest/async || echo 'Could not automagically symlink the prompt. Check out the readme on how to do it manually: https://github.com/sindresorhus/pure#manually'"
+    "postinstall": "dest=/usr/local/share/zsh/site-functions; mkdir -p $dest && ln -sf \"$PWD/purist.zsh\" $dest/prompt_purist_setup && ln -sf \"$PWD/async.zsh\" $dest/async || echo 'Could not automagically symlink the prompt. Check out the readme on how to do it manually: https://github.com/bramkok/purist#manually'"
   },
   "files": [
-    "pure.zsh",
+    "purist.zsh",
     "async.zsh"
   ],
   "keywords": [
@@ -32,6 +36,7 @@
     "shell",
     "bash",
     "pure",
+    "purist",
     "prompt",
     "theme",
     "git",
