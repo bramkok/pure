@@ -1,0 +1,95 @@
+{
+  "name": "bramkok/purist",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "",
+  "branch": "",
+  "style": {
+    "name": "Brutalist",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/BasicHeader",
+      "article": "article/MarkdownArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "Consolas, \"Liberation Mono\", Menlo, Courier, monospace",
+    "heading": {},
+    "typeScale": [
+      48,
+      32,
+      20,
+      18,
+      16,
+      14,
+      12
+    ],
+    "layout": {
+      "maxWidth": 1024,
+      "fluid": true
+    },
+    "colors": {
+      "text": "#333",
+      "background": "#fff",
+      "primary": "#666",
+      "secondary": "#888",
+      "highlight": "#1f80ff",
+      "muted": "#f6f6f6",
+      "border": "#eee"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/bramkok/purist",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/purist",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "purist",
+      "subhead": "A ZSH prompt for purists",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "purist: A ZSH prompt for purists",
+          "url": ""
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "bramkok",
+          "repo": "purist"
+        }
+      ],
+      "text": "v1.0.1"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "\n<blockquote>\n\n</blockquote>\n<p><img src=\"screenshot.png\"></p>\n<h2>Overview</h2>\n<p><code>purist</code> is a soft-spoken but eloquent ZSH prompt. Forked from\n<a href=\"https://github.com/sindresorhus/pure\">sindresorhus/pure</a>.</p>\n<h3>Details</h3>\n<ul>\n<li>Comes without prompt character.</li>\n<li>Shows <code>git</code> branch and whether it&apos;s dirty (with a red <code>&#x25CF;</code>).</li>\n<li>Indicates when you have unpushed/unpulled <code>git</code> commits with up/down arrows. <em>(Check is done asynchronously!)</em></li>\n<li>Command execution time will be displayed if it exceeds the set threshold.</li>\n<li>Username and host only displayed when in an SSH session.</li>\n<li>Shows the current path in the title and the when a process is running.</li>\n</ul>\n<h2>Install</h2>\n<p>Can be installed with <code>npm</code> or manually. Requires git 2.0.0+ and ZSH 5.0.0+.</p>\n<h3>npm</h3>\n<pre>$ npm install --global purist</pre><p>That&apos;s it. Skip to <a href=\"#getting-started\">Getting started</a>.</p>\n<h3>Manually</h3>\n<ol>\n<li><p>Either&#x2026;</p>\n<ul>\n<li>Clone this repo</li>\n<li>add it as a submodule, or</li>\n<li>just download <code>purist.zsh</code> and <code>async.zsh</code></li>\n</ul>\n</li>\n<li><p>Symlink <code>purist.zsh</code> to somewhere in <a href=\"http://www.refining-linux.org/archives/46/ZSH-Gem-12-Autoloading-functions/\"><code>$fpath</code></a> with the name <code>prompt_purist_setup</code>.</p>\n</li>\n<li><p>Symlink <code>async.zsh</code> in <code>$fpath</code> with the name <code>async</code>.</p>\n</li>\n</ol>\n<h4>Example</h4>\n<pre>$ ln -s &quot;$PWD/purist.zsh&quot; /usr/local/share/zsh/site-functions/prompt_purist_setup\n$ ln -s &quot;$PWD/async.zsh&quot; /usr/local/share/zsh/site-functions/async</pre><p><em>Run <code>echo $fpath</code> to see possible locations.</em></p>\n<p>For a user-specific installation (which would not require escalated privileges), simply add a directory to <code>$fpath</code> for that user:</p>\n<pre><span class=\"hljs-comment\"># .zshenv or .zshrc</span>\nfpath=( <span class=\"hljs-string\">&quot;<span class=\"hljs-variable\">$HOME</span>/.zfunctions&quot;</span> <span class=\"hljs-variable\">$fpath</span> )</pre><p>Then install the theme there:</p>\n<pre>$ ln -s &quot;$PWD/purist.zsh&quot; &quot;$HOME/.zfunctions/prompt_purist_setup&quot;\n$ ln -s &quot;$PWD/async.zsh&quot; &quot;$HOME/.zfunctions/async&quot;</pre><h2>Getting started</h2>\n<p>Initialize the prompt system (if not so already) and choose <code>purist</code>:</p>\n<pre><span class=\"hljs-comment\"># .zshrc</span>\n<span class=\"hljs-built_in\">autoload</span> -U promptinit &amp;&amp; promptinit\nprompt purist</pre><h2>Options</h2>\n<h3><code>PURE_CMD_MAX_EXEC_TIME</code></h3>\n<p>The max execution time of a process before its run time is shown when it exits. Defaults to <code>5</code> seconds.</p>\n<h3><code>PURE_GIT_PULL</code></h3>\n<p>Set <code>PURE_GIT_PULL=0</code> to prevent Purist from checking whether the current Git remote has been updated.</p>\n<h3><code>PURE_GIT_UNTRACKED_DIRTY</code></h3>\n<p>Set <code>PURE_GIT_UNTRACKED_DIRTY=0</code> to not include untracked files in dirtiness check. Only really useful on extremely huge repos like the WebKit repo.</p>\n<h3><code>PURE_GIT_DELAY_DIRTY_CHECK</code></h3>\n<p>Time in seconds to delay git dirty checking for large repositories (git status takes &gt; 2 seconds). The check is performed asynchronously, this is to save CPU. Defaults to <code>1800</code> seconds.</p>\n<h3><code>PURE_PROMPT_SYMBOL</code></h3>\n<p>Defines the prompt symbol. The default value is <code> </code>.</p>\n<h3><code>PURE_GIT_DOWN_ARROW</code></h3>\n<p>Defines the git down arrow symbol. The default value is <code>&#x21E3;</code>.</p>\n<h3><code>PURE_GIT_UP_ARROW</code></h3>\n<p>Defines the git up arrow symbol. The default value is <code>&#x21E1;</code>.</p>\n<h2>Example</h2>\n<pre><span class=\"hljs-comment\"># .zshrc</span>\n<span class=\"hljs-built_in\">autoload</span> -U promptinit &amp;&amp; promptinit\n\n<span class=\"hljs-comment\"># optionally define some options</span>\nPURE_CMD_MAX_EXEC_TIME=10\n\nprompt purist</pre><h2>Tips</h2>\n<p>In the screenshot you see Purist running in <a href=\"https://hyperterm.org\">HyperTerm</a> with the <a href=\"https://github.com/andrepolischuk/hyperterm-one-light\">hyperterm-one-light</a> theme and Menlo font.</p>\n<p>To have commands colorized as seen in the screenshot, install <a href=\"https://github.com/zsh-users/zsh-syntax-highlighting\">zsh-syntax-highlighting</a>.</p>\n<h2>Related</h2>\n<ul>\n<li><a href=\"https://github.com/sindresorhus/pure\">sindresorhus/pure</a> Original repository</li>\n</ul>\n<h2>License</h2>\n<p>MIT &#xA9; <a href=\"https://bramkok.com\">Bram Kok</a></p>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/bramkok/purist",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/bramkok",
+          "text": "bramkok"
+        }
+      ]
+    }
+  ]
+}
